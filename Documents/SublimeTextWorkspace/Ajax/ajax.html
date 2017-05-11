@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ajax同步异步</title>
+</head>
+    <p>XMLHttpRequest 通过这个对象达到异步要求</p>
+    <p>XMLHttpRequest和服务器进行数据的异步交换</p>
+<body>
+    
+</body>
+<script type="text/javascript">
+    var request;
+    if(window.XMLHttpRequest){
+        request  = new XMLHttpRequest();//IE7+。。。。。。
+    }else{
+        request = new ActiveXObject("Microsoft.XMLHTTP");//IE5，IE6
+    }
+    //request.open(method,url,async)
+    request.open("GET",'get.php',true);
+    request.send(string);
+    //发送请求
+    request.open("POST","create.php",true);
+    request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    request.send("name=王二狗&sex=男");
+    
+    //获取请求;
+    request.responseText; //获取字符串形式的响应数据
+    request.status;
+    request.statusText;
+    request.getAllResponseHeader()
+    //获取得到通知
+    //request .readyState属性  状态  4代表响应就绪
+    request.onreadystatechange = function(){
+        if(request.readyState==4&&request.status==200){
+           // do some thing 请求完成 ，并且成功了， 
+        }
+    }
+</script>
+</html>
